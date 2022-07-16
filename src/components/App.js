@@ -1,6 +1,3 @@
-import React from "react";
-import MovieCard from "./MovieCard";
-
 function App() {
   const title = "Mad Max";
   const posterURL =
@@ -9,9 +6,20 @@ function App() {
 
   return (
     <div className="App">
-      <MovieCard title={title} genres={genresArr} />
+      {/* passing down props from the parent component */}
+      <MovieCard title={title} posterSrc={posterURL} genres={genresArr} />
     </div>
   );
 }
 
+// child component
+function MovieCard(props) {
+  return (
+    <div className="movie-card">
+      <img src={props.posterSrc} alt={props.title} />
+      <h2>{props.title}</h2>
+      <small>{props.genres.join(", ")}</small>
+    </div>
+  );
+}
 export default App;
